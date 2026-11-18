@@ -1,0 +1,11 @@
+# /etc/udev/rules.d/99-radio-monitor.rules
+# Постійні імена та права доступу для апаратури радіомоніторингу
+
+# SDR-приймач RTL2832U (VID 0bda, PID 2838, SN 00000001) -> /dev/sdr_primary
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0bda", ATTR{idProduct}=="2838", ATTR{serial}=="00000001", SYMLINK+="sdr_primary", MODE="0666"
+
+# USB-UART адаптер компаса -> /dev/uart_compass
+# Шаблон: розкоментувати й підставити свої значення з
+#   udevadm info -a -n /dev/ttyUSB0 | grep -m3 -E 'idVendor|idProduct|serial'
+# CP2102: 10c4:ea60, CH340: 1a86:7523 (у CH340 немає serial — приберіть ATTRS{serial})
+#SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{serial}=="0001", SYMLINK+="uart_compass", MODE="0666"

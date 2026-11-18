@@ -1,0 +1,3 @@
+$ ls -l /dev/uart* /dev/sdr*
+ls: cannot access '/dev/uart*': No such file or directory
+lrwxrwxrwx 1 root root 15 Nov 18 08:19 /dev/sdr_primary -> bus/usb/001/003
